@@ -5,12 +5,14 @@ export default function Player({ playerName, symbol }) {
   const [name, setName] = useState(playerName);
 
   function handleClick() {
+    if (isEditing && name.trim().length === 0) return;
     setIsEditing(!isEditing);
   }
 
   function handleChange(e) {
     setName(e.target.value);
   }
+
   return (
     <li>
       <span className="player">
@@ -19,14 +21,19 @@ export default function Player({ playerName, symbol }) {
             type="text"
             name="playerName"
             value={name}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
           />
         ) : (
           <span className="player-name">{name}</span>
         )}
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button onClick={handleClick}>{isEditing ? "SAVE" : "EDIT"}</button>
+      <button
+        onClick={handleClick}
+        disabled={isEditing && name.trim().length === 0}
+      >
+        {isEditing ? "SAVE" : "EDIT"}
+      </button>
     </li>
   );
 }
