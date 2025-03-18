@@ -6,7 +6,7 @@ export default function Player({ playerName, symbol }) {
 
   function handleClick() {
     if (isEditing && name.trim().length === 0) return;
-    setIsEditing(!isEditing);
+    setIsEditing((editing) => !editing);
   }
 
   function handleChange(e) {
