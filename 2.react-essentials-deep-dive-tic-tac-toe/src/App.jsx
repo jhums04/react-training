@@ -13,6 +13,10 @@ const initialGameBoard = [
 function App() {
   const [activePlayer, setActivePlayer] = useState("X");
   const [gameTurns, setGameTurns] = useState([]);
+  const [players, setPlayers] = useState([
+    { name: "Player 1", symbol: "X" },
+    { name: "Player 2", symbol: "O" },
+  ]);
 
   let gameBoard = [...initialGameBoard.map((array) => [...array])];
   let winner = null;
@@ -37,7 +41,10 @@ function App() {
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol
     ) {
-      winner = firstSquareSymbol;
+      const playerWon = players.find(
+        (player) => player.symbol === firstSquareSymbol
+      );
+      winner = playerWon.name;
     }
   }
 
@@ -72,11 +79,13 @@ function App() {
             playerName="Player 1"
             symbol="X"
             isActive={activePlayer === "X"}
+            setPlayers={setPlayers}
           />
           <Player
             playerName="Player 2"
             symbol="O"
             isActive={activePlayer === "O"}
+            setPlayers={setPlayers}
           />
         </ol>
 
