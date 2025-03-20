@@ -69,6 +69,7 @@ function App() {
 
   function handleRestart() {
     setGameTurns([]);
+    setActivePlayer("X");
   }
 
   return (
