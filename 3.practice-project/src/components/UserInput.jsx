@@ -2,7 +2,7 @@ export default function UserInput({ userInput, setUserInput }) {
   function handleChange(inputIdentifier, newValue) {
     console.log(newValue);
     setUserInput((prev) => {
-      return { ...prev, [inputIdentifier]: newValue };
+      return { ...prev, [inputIdentifier]: +newValue };
     });
   }
   return (
