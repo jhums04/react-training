@@ -22,5 +22,5 @@
 ## Disadvantages
 
 - You need to know CSS.
-- CSS code is not scoped to components.
-  - CSS rules may clash across components.
+- You need to style every element individually
+- no separation between css and jsx code
